@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+
+
+    .parallax {
+      min-height: 100vh;
+      /* background: linear-gradient(#333, #111); */
+      /* border: GOLD 7px solid; */
+      position: relative;
+      overflow: hidden;
+    }
+
+    .parallax h1 {
+      margin: 0;
+      color: black;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 2.5em;
+      line-height: 1.4em;
+      /* border: purple 5px solid; */
+      width: 100vw;
+      height: 100vh;
+      z-index: 999;
+    }
+
+    .front-layer,
+    .dim-layer,
+    .mid-layer,
+    .ora-layer,
+    .back-layer {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .back-layer {
+      z-index: 0;
+    }
+
+    .front-layer {
+      z-index: 1;
+    }
+
+    .front-layer img,
+    .dim-layer img,
+    .mid-layer img,
+    .ora-layer img,
+    .back-layer img {
+      position: absolute;
+
+    }
+
+    .mid-layer img {
+      z-index: 999
+    }
+
+    .front-layer img {
+      /* box-shadow: 0 0 1.5em rgba(0, 0, 0, 0.5); */
+      max-width: 220px;
+    }
+
+    .front-layer img:nth-child(1) {
+      top: 50%;
+      left: 40%;
+      width: 16%;
+      /* border: red 5px solid */
+    }
+
+    .mid-layer img:nth-child(1) {
+      top: 15%;
+      left: 40%;
+      width: 16%;
+      /* border: red 5px solid */
+    }
+
+    .dim-layer img:nth-child(1) {
+      top: 25%;
+      left: 4%;
+      width: 16%;
+      /* border: red 5px solid */
+    }
+
+    .ora-layer img:nth-child(1) {
+      top: 58%;
+      right: 70%;
+      width: 16%;
+      /* border: red 3px solid; */
+
+      /* border: red 5px solid */
+    }
+
+    .front-layer img:nth-child(2) {
+      top: 50%;
+      left: 20%;
+      width: 13%;
+    }
+
+    .front-layer img:nth-child(3) {
+      bottom: 0%;
+      left: 30%;
+      width: 14%;
+    }
+
+    .front-layer img:nth-child(4) {
+      bottom: 20%;
+      right: 10%;
+      width: 12%;
+    }
+
+    .front-layer img:nth-child(5) {
+      top: 10%;
+      right: 30%;
+      width: 11%;
+    }
+
+    .back-layer img:nth-child(1) {
+      top: 20%;
+      right: 10%;
+      width: 30%;
+      /* border: red 5px solid */
+    }
+
+    .back-layer img:nth-child(2) {
+      top: -20%;
+      right: 20%;
+      width: 32%;
+    }
+
+    .back-layer img:nth-child(3) {
+      bottom: -10%;
+      left: 0%;
+      width: 34%;
+    }
+
+    .back-layer img:nth-child(4) {
+      bottom: 20%;
+      right: 10%;
+      width: 12%;
+    }
+
+    .back-layer img:nth-child(5) {
+      top: 10%;
+      right: 30%;
+      width: 11%;
+    }
+
+    .back-layer img {
+      /* box-shadow: 0 0 0.9em rgba(0, 0, 0, 0.8); */
+      max-width: 380px;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="parallax">
+    <h1> Parallax Hover effect </h1>
+
+
+    <div class="front-layer">
+      <img src="./fruit/ana.jpg" alt="fruit">
+    </div>
+
+    <div class="back-layer">
+      <img src="./fruit/green.jpg" alt="fruit">
+    </div>
+    <div class="dim-layer">
+      <img src="./fruit/red.jpg" alt="fruit">
+    </div>
+    <div class="ora-layer">
+      <img src="./fruit/ora.jpg" alt="fruit">
+    </div>
+    <div class="mid-layer">
+      <img src="./fruit/ban.jpg" alt="fruit">
+    </div>
+  </section>
+  <script>
+    const parallax = document.querySelector('.parallax');
+    const front = document.querySelector('.front-layer');
+    const mid = document.querySelector('.mid-layer');
+    const dim = document.querySelector('.dim-layer');
+    const ora = document.querySelector('.ora-layer');
+    const back = document.querySelector('.back-layer');
+    const sFront = 400;
+    const sMid = -220;
+    const sOra = 120;
+    const sDim = 150;
+    const sBack = 500;
+
+    parallax.addEventListener('mousemove', e => {
+      const x = e.clientX;
+      const y = e.clientY;
+      front.style.transform = `translate(${x / sFront}%, ${y / sFront}%)`;
+      mid.style.transform = `translate(${x / sMid}%, ${y / sMid}%)`;
+      dim.style.transform = `translate(${x / sDim}%, ${y / sMid}%)`;
+      ora.style.transform = `translate(${x / sOra}%, ${y / sOra}%)`;
+      back.style.transform = `translate(${x/ sBack}%, ${y/ sBack}% ) `;
+    })
+  </script>
+</body>
+
+</html>
